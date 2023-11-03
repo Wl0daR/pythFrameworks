@@ -31,4 +31,4 @@ class Car(models.Model):
     doors = models.IntegerField(blank=False)
 
 def __str__(self):
-    return self.brand + self.model
+    return self.brand + self.model + self.year
