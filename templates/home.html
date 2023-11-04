@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    <title>Lista Samochodów</title>
+    <style>
+        /* Zagnieżdżony CSS */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+        }
+
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+        }
+
+        main {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #333;
+            color: #fff;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        footer {
+            text-align: center;
+            padding: 10px;
+            background-color: #333;
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Lista Samochodów</h1>
+    </header>
+    <main>
+        <table>
+            <thead>
+                <tr>
+                    <th>Marka</th>
+                    <th>Model</th>
+                    <th>Rok produkcji</th>
+                    <th>Pojemność silnika</th>
+                    <th>Rodzaj silnika</th>
+                    <th>Skrzynia biegów</th>
+                    <th>Napęd</th>
+                    <th>Liczba drzwi</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for car in cars %}
+                    <tr>
+                        <td>{{ car.brand }}</td>
+                        <td>{{ car.model }}</td>
+                        <td>{{ car.year }}</td>
+                        <td>{{ car.engineCapacity }} cm³</td>
+                        <td>{{ car.get_engineType_display }}</td>
+                        <td>{{ car.get_gear_display }}</td>
+                        <td>{{ car.get_drive_train_display }}</td>
+                        <td>{{ car.doors }}</td>
+                    </tr>
+                {% empty %}
+                    <tr>
+                        <td colspan="8">Brak dostępnych samochodów.</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </main>
+    <footer>
+        &copy; 2023 Moja Strona
+    </footer>
+</body>
+</html>
